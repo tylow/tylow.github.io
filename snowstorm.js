@@ -14,7 +14,7 @@ var snowStorm = (function(window, document) {
   this.className = null;          // CSS class name for further customization on snow elements
   this.flakeBottom = null;        // Integer for Y axis snow limit, 0 or null for "full-screen" snow effect
   this.followMouse = false;        // Snow movement can respond to the user's mouse
-  this.snowColor = '#0000FF';        // Don't eat (or use?) yellow snow.
+  this.snowColor = '#0000CD';        // Don't eat (or use?) yellow snow.
   this.snowCharacter = '&bull;';  // &bull; = bullet, &middot; is square on some systems etc.
   this.snowStick = true;          // Whether or not snow should "stick" at the bottom. When off, will never collect.
   this.targetElement = null;      // element which snow will be appended to (null = document.body) - can be an element ID eg. 'myDiv', or a DOM node reference
@@ -31,7 +31,7 @@ var snowStorm = (function(window, document) {
   this.flakeWidth = 8;            // Max pixel width reserved for snow element
   this.flakeHeight = 8;           // Max pixel height reserved for snow element
   this.vMaxX = .3;                 // Maximum X velocity range for snow
-  this.vMaxY = .8;                 // Maximum Y velocity range for snow
+  this.vMaxY = .6;                 // Maximum Y velocity range for snow
   this.zIndex = 0;                // CSS stacking order applied to each snowflake
 
   // --- "No user-serviceable parts inside" past this point, yadda yadda ---
@@ -234,7 +234,7 @@ var snowStorm = (function(window, document) {
     var i;
     // vRndX = plusMinus(rnd(storm.vMaxX,0.2));
     vRndX = rnd(storm.vMaxX,-storm.vMaxX);
-    vRndY = rnd(storm.vMaxY,0.2);
+   // vRndY = rnd(storm.vMaxY,0.2);
     if (this.flakes) {
       for (i=0; i<this.flakes.length; i++) {
         if (this.flakes[i].active) {
@@ -446,7 +446,7 @@ var snowStorm = (function(window, document) {
 
     this.setVelocities = function() { //range of individual snowflakes
       s.vX = rnd(vRndX*5,0.1); 
-      s.vY = vRndY+rnd(storm.vMaxY*.2,0.1);
+      s.vY = .3+rnd(storm.vMaxY*.5,0.1);
     };
 
     this.setOpacity = function(o,opacity) {
